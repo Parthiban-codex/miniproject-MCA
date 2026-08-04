@@ -1,0 +1,1377 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:20px;
+
+    overflow-x:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
+
+    transition:.5s;
+
+}
+
+
+
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
+
+
+.weather-bg{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(255,255,255,.4),
+        transparent 40%
+    );
+
+    animation:bgMove 10s infinite alternate;
+
+}
+
+
+
+@keyframes bgMove{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.15);
+    }
+
+}
+
+
+
+
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+
+.app-container{
+
+    width:100%;
+
+    max-width:1100px;
+
+}
+
+
+
+
+
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+
+.glass{
+
+    background:
+    rgba(255,255,255,.15);
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:
+    blur(20px);
+
+    -webkit-backdrop-filter:
+    blur(20px);
+
+    border-radius:25px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
+
+    animation:
+    cardEnter .6s ease;
+
+}
+
+
+
+
+@keyframes cardEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+
+
+
+
+
+/* =========================
+ HEADER
+========================= */
+
+
+.header{
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.header h1{
+
+    font-size:40px;
+
+}
+
+
+
+.header p{
+
+    opacity:.8;
+
+}
+
+
+
+
+.header-actions button{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    margin-left:10px;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    color:white;
+
+    background:
+    rgba(255,255,255,.2);
+
+    transition:.3s;
+
+}
+
+
+
+.header-actions button:hover{
+
+    transform:
+    scale(1.1)
+    rotate(10deg);
+
+}
+
+
+
+
+
+
+/* =========================
+ SEARCH
+========================= */
+
+
+.search-box{
+
+    padding:15px;
+
+    display:flex;
+
+    gap:10px;
+
+    position:relative;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.search-box input{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+    color:white;
+
+    background:
+    rgba(255,255,255,.25);
+
+}
+
+
+
+.search-box input::placeholder{
+
+    color:#ddd;
+
+}
+
+
+
+.search-box button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:15px;
+
+    background:
+    rgba(0,150,255,.7);
+
+}
+
+
+
+#suggestions{
+
+    position:absolute;
+
+    top:65px;
+
+    left:15px;
+
+    right:15px;
+
+    background:
+    rgba(0,0,0,.6);
+
+    border-radius:15px;
+
+    z-index:10;
+
+}
+
+
+
+
+
+
+/* =========================
+ STATUS BADGE
+========================= */
+
+
+.status-badge{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    z-index:100;
+
+}
+
+
+
+
+
+/* =========================
+ CURRENT WEATHER
+========================= */
+
+
+.current-weather{
+
+    padding:30px;
+
+}
+
+
+
+.location{
+
+    text-align:center;
+
+}
+
+
+
+.location h2{
+
+    font-size:32px;
+
+}
+
+
+
+.weather-main{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin:25px;
+
+}
+
+
+
+.weather-main img{
+
+    width:130px;
+
+    animation:
+    float 3s infinite;
+
+}
+
+
+
+@keyframes float{
+
+    50%{
+
+        transform:
+        translateY(-10px);
+
+    }
+
+}
+
+
+
+#temperature{
+
+    font-size:55px;
+
+}
+/* =========================
+   WEATHER DETAILS
+========================= */
+
+
+.weather-details{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+
+
+.detail-card{
+
+    padding:20px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.15);
+
+}
+
+
+
+.detail-card span{
+
+    font-size:30px;
+
+}
+
+
+
+.detail-card p{
+
+    opacity:.8;
+
+    margin:8px;
+
+}
+
+
+
+
+
+
+/* =========================
+   QUICK INFO
+========================= */
+
+
+.quick-info{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.info-card{
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+
+
+
+
+
+/* =========================
+   RECOMMENDATION
+========================= */
+
+
+.recommendation{
+
+    margin-top:25px;
+
+    padding:25px;
+
+}
+
+
+
+.recommendation li{
+
+    margin:10px;
+
+}
+
+
+
+
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+
+.section-title{
+
+    margin:30px 0 15px;
+
+    font-size:28px;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   FORECAST
+========================= */
+
+
+.forecast-container,
+.hourly-container{
+
+    display:flex;
+
+    gap:15px;
+
+    overflow-x:auto;
+
+    padding-bottom:10px;
+
+}
+
+
+
+.forecast-card,
+.hour-card{
+
+    min-width:150px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+
+
+.forecast-card img,
+.hour-card img{
+
+    width:80px;
+
+}
+
+
+
+
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+
+
+.dashboard-card{
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+
+
+.dashboard-card h1{
+
+    font-size:35px;
+
+    margin:15px;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   WIND PANEL
+========================= */
+
+
+.wind-panel{
+
+    padding:25px;
+
+    margin-top:25px;
+
+}
+
+
+
+.wind-info{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+
+
+
+
+
+/* =========================
+   CHARTS
+========================= */
+
+
+.charts{
+
+    padding:25px;
+
+    margin-top:25px;
+
+}
+
+
+
+canvas{
+
+    width:100% !important;
+
+    height:250px !important;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.1);
+
+}
+
+
+
+
+
+
+
+/* =========================
+   FAVORITES / HISTORY
+========================= */
+
+
+.favorites,
+.history{
+
+    margin-top:25px;
+
+    padding:25px;
+
+}
+
+
+
+.favorite-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:15px;
+
+}
+
+
+
+.favorite-buttons button{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    rgba(255,255,255,.2);
+
+}
+
+
+
+
+
+.history li{
+
+    cursor:pointer;
+
+    margin:10px;
+
+}
+
+
+
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+
+.utilities{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+
+
+.utilities button,
+.floating-btn{
+
+    flex:1;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    color:white;
+
+    background:
+    rgba(255,255,255,.2);
+
+}
+
+
+
+.floating-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    background:#2196f3;
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   LOADING
+========================= */
+
+
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    background:
+    rgba(0,0,0,.5);
+
+    backdrop-filter:
+    blur(10px);
+
+}
+
+
+
+.loading-circle{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    border:
+
+    8px solid white;
+
+    border-top-color:#2196f3;
+
+    animation:
+    spin 1s linear infinite;
+
+}
+
+
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+
+
+
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+
+.mobile-nav{
+
+    display:none;
+
+    position:fixed;
+
+    bottom:15px;
+
+    left:15px;
+
+    right:15px;
+
+    padding:12px;
+
+    justify-content:space-around;
+
+    z-index:100;
+
+}
+
+
+
+.mobile-nav button{
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+}
+
+
+
+.mobile-nav span{
+
+    display:block;
+
+    font-size:11px;
+
+}
+/* =========================
+   DARK MODE
+========================= */
+
+
+.dark{
+
+    background:
+    linear-gradient(
+        135deg,
+        #000000,
+        #434343
+    );
+
+}
+
+
+
+.dark .glass{
+
+    background:
+    rgba(0,0,0,.35);
+
+}
+
+
+
+
+
+/* =========================
+   WEATHER EFFECTS
+========================= */
+
+
+.rain-drop{
+
+    position:absolute;
+
+    top:-50px;
+
+    animation:
+    rainFall linear infinite;
+
+}
+
+
+
+@keyframes rainFall{
+
+    from{
+
+        transform:
+        translateY(-100px);
+
+    }
+
+
+    to{
+
+        transform:
+        translateY(100vh);
+
+    }
+
+}
+
+
+
+
+.snow-flake{
+
+    position:absolute;
+
+    top:-50px;
+
+    animation:
+    snowFall linear infinite;
+
+}
+
+
+
+@keyframes snowFall{
+
+    from{
+
+        transform:
+        translateY(-100px)
+        rotate(0deg);
+
+    }
+
+
+    to{
+
+        transform:
+        translateY(100vh)
+        rotate(360deg);
+
+    }
+
+}
+
+
+
+
+
+.sun-effect{
+
+    position:absolute;
+
+    font-size:150px;
+
+    top:10%;
+
+    right:10%;
+
+    animation:
+    sunPulse 3s infinite;
+
+}
+
+
+
+@keyframes sunPulse{
+
+    50%{
+
+        transform:
+        scale(1.2);
+
+    }
+
+}
+
+
+
+
+.cloud-effect{
+
+    position:absolute;
+
+    font-size:120px;
+
+    top:20%;
+
+    left:20%;
+
+    animation:
+    cloudMove 10s infinite;
+
+}
+
+
+
+@keyframes cloudMove{
+
+    50%{
+
+        transform:
+        translateX(100px);
+
+    }
+
+}
+
+
+
+
+
+
+/* =========================
+   TOUCH EFFECT
+========================= */
+
+
+.glass{
+
+    transition:.3s;
+
+}
+
+
+
+.glass:hover{
+
+    transform:
+    translateY(-5px);
+
+}
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+
+@media(max-width:900px){
+
+
+.header h1{
+
+    font-size:32px;
+
+}
+
+
+
+.weather-details,
+.quick-info,
+.dashboard-grid{
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+}
+
+
+
+.weather-main{
+
+    flex-direction:column;
+
+}
+
+
+
+.utilities{
+
+    flex-direction:column;
+
+}
+
+
+
+.mobile-nav{
+
+    display:flex;
+
+}
+
+
+
+.app-container{
+
+    padding-bottom:100px;
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+
+@media(max-width:500px){
+
+
+body{
+
+    padding:10px;
+
+}
+
+
+
+.header{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+}
+
+
+
+.header h1{
+
+    font-size:28px;
+
+}
+
+
+
+.search-box{
+
+    flex-direction:column;
+
+}
+
+
+
+.search-box button{
+
+    width:100%;
+
+}
+
+
+
+.weather-details,
+.quick-info,
+.dashboard-grid{
+
+    grid-template-columns:
+    1fr;
+
+}
+
+
+
+#temperature{
+
+    font-size:45px;
+
+}
+
+
+
+.weather-main img{
+
+    width:100px;
+
+}
+
+
+
+.forecast-card,
+.hour-card{
+
+    min-width:130px;
+
+}
+
+
+
+.status-badge{
+
+    top:10px;
+
+    right:10px;
+
+    font-size:12px;
+
+}
+
+
+
+}
+
+
+
+
+
+/* =========================
+   PRINT MODE
+========================= */
+
+
+@media print{
+
+
+body{
+
+    background:white;
+
+    color:black;
+
+}
+
+
+
+.weather-bg,
+.mobile-nav,
+.utilities,
+.status-badge{
+
+    display:none;
+
+}
+
+
+
+.glass{
+
+    box-shadow:none;
+
+    background:white;
+
+    color:black;
+
+}
+
+
+}
