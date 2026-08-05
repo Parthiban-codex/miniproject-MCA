@@ -5,7 +5,7 @@
 // ======================================
 
 
-const API_KEY = "YOUR_NEW_WEATHERAPI_KEY";
+const API_KEY = "1a0421e0a5b5919b5c3123f652d859b0";
 
 const BASE_URL ="https://www.weatherapi.com/my/";
 
