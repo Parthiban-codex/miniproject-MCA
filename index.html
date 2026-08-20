@@ -4,1017 +4,437 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherPro</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
+    <link rel="stylesheet" href="style.css">   
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 </head>
-
 <body>
-
-<!-- Animated Background -->
 <div class="background"></div>
-
-<!-- ================= NAVBAR ================= -->
-
 <nav class="navbar">
-
     <div class="logo">
         <i class="fa-solid fa-cloud-sun"></i>
         <span>WeatherPro</span>
     </div>
-
     <ul class="nav-links">
-
         <li><a href="#">Home</a></li>
-
         <li><a href="#forecast">Forecast</a></li>
-
         <li><a href="#about">About</a></li>
-
         <li><a href="#contact">Contact</a></li>
-
     </ul>
-
     <div class="nav-actions">
-
-        <!-- Dark Mode -->
-
         <button id="themeBtn" class="icon-btn">
-
             <i class="fa-solid fa-moon"></i>
-
         </button>
-
     </div>
-
 </nav>
-
-<!-- ================= HERO ================= -->
-
 <section class="hero">
-
     <h1>
         Weather Forecast Dashboard
     </h1>
-
     <p>
         Real-time weather, hourly forecast, weekly forecast,
         AQI, UV Index, recommendations and much more.
     </p>
-
 </section>
-
-<!-- ================= SEARCH ================= -->
-
 <section class="search-section">
-
     <div class="search-box">
-
         <input
             type="text"
             id="cityInput"
             placeholder="Search City...">
-
-        <!-- Search -->
-
         <button id="searchBtn" class="icon-btn">
-
             <i class="fa-solid fa-magnifying-glass"></i>
-
         </button>
-
-        <!-- Voice -->
-
         <button id="voiceBtn" class="icon-btn">
-
             <i class="fa-solid fa-microphone"></i>
-
         </button>
-
     </div>
-
 </section>
-
-<!-- ================= ACTION BUTTONS ================= -->
-
 <section class="action-buttons">
-
-    <!-- Download -->
-
     <button id="downloadBtn" class="action-btn">
-
         <i class="fa-solid fa-download"></i>
-
         Download Report
-
     </button>
-
-    <!-- Add to Favorite -->
-
     <button id="favoriteBtn" class="action-btn">
-
         <i class="fa-solid fa-heart"></i>
-
         Add Favorite
-
     </button>
-
-    <!-- Unit Switch -->
-
     <button id="unitBtn" class="action-btn">
-
         °C / °F
-
     </button>
-
 </section>
-
-<!-- ================= DATE & CLOCK ================= -->
-
 <section class="time-section glass">
-
     <div>
-
         <h2 id="currentDate">
-
             Wednesday,
             August 5,
             2026
-
         </h2>
-
     </div>
-
     <div>
-
         <h1 id="currentTime">
-
             12:00:00 PM
-
         </h1>
-
     </div>
-
 </section>
-
-<!-- =====================================================
-     NEXT PART STARTS FROM CURRENT WEATHER CARD
-===================================================== -->
-<!-- ================= CURRENT WEATHER ================= -->
-
 <section class="weather-container">
-
     <div class="weather-card glass">
-
         <div class="weather-left">
-
             <h2 id="cityName">
                 <i class="fa-solid fa-location-dot"></i>
                 City Name
             </h2>
-
             <div class="weather-main">
-
                 <img
                     id="weatherIcon"
                     src=""
                     alt="Weather Icon">
-
                 <h1 id="temperature">
                     --°C
                 </h1>
-
             </div>
-
             <h3 id="description">
                 Clear Sky
             </h3>
-
             <h1 id="weatherEmoji">
                 ☀️
             </h1>
-
         </div>
-
         <div class="weather-right">
-
             <div class="info-card">
                 <i class="fa-solid fa-temperature-half"></i>
                 <h4>Feels Like</h4>
                 <p id="feelsLike">--°C</p>
             </div>
-
             <div class="info-card">
                 <i class="fa-solid fa-droplet"></i>
                 <h4>Humidity</h4>
                 <p id="humidity">--%</p>
             </div>
-
             <div class="info-card">
                 <i class="fa-solid fa-wind"></i>
                 <h4>Wind Speed</h4>
                 <p id="wind">-- km/h</p>
             </div>
-
             <div class="info-card">
                 <i class="fa-solid fa-gauge-high"></i>
                 <h4>Pressure</h4>
                 <p id="pressure">-- hPa</p>
             </div>
-
             <div class="info-card">
                 <i class="fa-solid fa-eye"></i>
                 <h4>Visibility</h4>
                 <p id="visibility">-- km</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
-
-<!-- ================= SUNRISE / SUNSET ================= -->
-
 <section class="sun-section">
-
     <div class="sun-card glass">
-
         <i class="fa-solid fa-sun"></i>
-
         <h2>Sunrise</h2>
-
         <h3 id="sunrise">
             --:--
         </h3>
-
     </div>
-
     <div class="sun-card glass">
-
         <i class="fa-solid fa-moon"></i>
-
         <h2>Sunset</h2>
-
         <h3 id="sunset">
             --:--
         </h3>
-
     </div>
-
 </section>
-
-<!-- ================= AIR QUALITY ================= -->
-
 <section class="aqi-section">
-
     <div class="glass mini-card">
-
         <i class="fa-solid fa-leaf"></i>
-
         <h3>Air Quality Index</h3>
-
         <h2 id="aqi">
             --
         </h2>
-
     </div>
-
     <div class="glass mini-card">
-
         <i class="fa-solid fa-sun"></i>
-
         <h3>UV Index</h3>
-
         <h2 id="uv">
             --
         </h2>
-
     </div>
-
     <div class="glass mini-card">
-
         <i class="fa-solid fa-face-smile"></i>
-
         <h3>Comfort Score</h3>
-
         <h2 id="comfort">
             --
         </h2>
-
     </div>
-
 </section>
-
-<!-- ================= WEATHER STATUS ================= -->
-
 <section class="status-section">
-
     <div class="glass status-card">
-
         <h2>Current Weather Status</h2>
-
         <p id="weatherStatus">
-
             Loading weather...
-
         </p>
-
     </div>
-
 </section>
-
-<!-- =========================================================
-    PART 1C STARTS HERE
-    - Clothing Recommendation
-    - Travel Recommendation
-    - Health Advice
-    - Exercise Recommendation
-    - Driving Advice
-    - Farming Advice
-    - Laundry Advice
-========================================================= -->
-<!-- ================= RECOMMENDATIONS ================= -->
-
 <section class="recommendation-section">
-
     <h2 class="section-title">
         <i class="fa-solid fa-lightbulb"></i>
         Smart Weather Recommendations
     </h2>
-
     <div class="recommendation-grid">
-
-        <!-- Clothing -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-shirt"></i>
-
             <h3>Clothing</h3>
-
             <p id="clothingAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Travel -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-plane"></i>
-
             <h3>Travel</h3>
-
             <p id="travelAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Health -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-heart-pulse"></i>
-
             <h3>Health</h3>
-
             <p id="healthAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Exercise -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-person-running"></i>
-
             <h3>Exercise</h3>
-
             <p id="exerciseAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Driving -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-car"></i>
-
             <h3>Driving</h3>
-
             <p id="drivingAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Farming -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-seedling"></i>
-
             <h3>Farming</h3>
-
             <p id="farmingAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Laundry -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-soap"></i>
-
             <h3>Laundry</h3>
-
             <p id="laundryAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
-        <!-- Comfort -->
-
         <div class="recommend-card glass">
-
             <i class="fa-solid fa-face-smile"></i>
-
             <h3>Comfort</h3>
-
             <p id="comfortAdvice">
                 Loading recommendation...
             </p>
-
         </div>
-
     </div>
-
 </section>
-
-<!-- ================= WEATHER FACT ================= -->
-
 <section class="weather-fact glass">
-
     <h2>
         <i class="fa-solid fa-cloud-sun"></i>
         Weather Fact
     </h2>
-
     <p id="weatherFact">
         Interesting weather facts will appear here.
     </p>
-
 </section>
-
-<!-- ================= WEATHER ALERT ================= -->
-
 <section class="weather-alert glass">
-
     <h2>
-
         <i class="fa-solid fa-triangle-exclamation"></i>
-
         Weather Alert
-
     </h2>
-
     <p id="weatherAlert">
-
         No weather alerts.
-
     </p>
-
 </section>
-
-<!-- ================= WEATHER EMOJI ================= -->
-
 <section class="emoji-section">
-
     <div class="glass emoji-card">
-
         <h2>Today's Weather Mood</h2>
-
         <h1 id="bigEmoji">
             🌤️
         </h1>
-
         <p id="emojiText">
             Pleasant weather today!
         </p>
-
     </div>
-
 </section>
-
-<!-- ======================================================
-     PART 1D STARTS HERE
-     - 24-Hour Forecast
-     - Monday–Saturday Forecast
-     - Weather Chart
-     - Search History
-     - Favorite Cities
-====================================================== -->
-<!-- ================= 24 HOUR FORECAST ================= -->
-
 <section id="forecast" class="forecast-section">
-
     <h2 class="section-title">
         <i class="fa-solid fa-clock"></i>
         24 Hour Weather Prediction
     </h2>
-
-
     <div id="hourlyForecast" class="hourly-container">
-
-
-        <!-- JavaScript will create hourly cards here -->
-
-
         <div class="hour-card glass">
-
             <h3>12 PM</h3>
-
             <i class="fa-solid fa-cloud-sun"></i>
-
             <h2>
                 30°C
             </h2>
-
             <p>
                 Sunny
             </p>
-
         </div>
-
-
     </div>
-
 </section>
-
-
-
-<!-- ================= WEEKLY FORECAST ================= -->
-
-
 <section class="weekly-section">
-
-
     <h2 class="section-title">
-
         <i class="fa-solid fa-calendar-days"></i>
-
         Monday - Saturday Forecast
-
     </h2>
-
-
-
     <div id="weeklyForecast" class="weekly-container">
-
-
-        <!-- JavaScript will create forecast cards -->
-
-
         <div class="day-card glass">
-
-
             <h3>
                 Monday
             </h3>
-
-
             <i class="fa-solid fa-cloud"></i>
-
-
             <h2>
                 29°C
             </h2>
-
-
             <p>
                 Cloudy
             </p>
-
-
         </div>
-
-
-
     </div>
-
-
 </section>
-
-
-
-
-<!-- ================= WEATHER CHART ================= -->
-
-
 <section class="chart-section glass">
-
-
     <h2>
-
         <i class="fa-solid fa-chart-line"></i>
-
         Temperature Chart
-
     </h2>
-
-
-
     <canvas id="weatherChart"></canvas>
-
-
-
 </section>
-
-
-
-
-
-<!-- ================= SEARCH HISTORY ================= -->
-
-
 <section class="history-section glass">
-
-
     <h2>
-
         <i class="fa-solid fa-clock-rotate-left"></i>
-
         Recent Searches
-
     </h2>
-
-
-
     <ul id="historyList">
-
-
         <li>
             No recent searches
         </li>
-
-
     </ul>
-
-
 </section>
-
-
-
-
-
-<!-- ================= FAVORITE CITIES ================= -->
-
-
 <section class="favorite-section glass">
-
-
     <h2>
-
         <i class="fa-solid fa-star"></i>
-
         Favorite Cities
-
     </h2>
-
-
-
     <ul id="favoriteList">
-
-
         <li>
             No favorite cities
         </li>
-
-
     </ul>
-
-
-
 </section>
-
-
-
-
-
-<!-- ================= LOADING SCREEN ================= -->
-
-
 <div id="loading">
-
-
     <div class="spinner">
-
-
     </div>
-
-
     <h3>
         Loading Weather...
     </h3>
-
-
 </div>
-
-
-
-
-
-<!-- ================= ERROR MESSAGE ================= -->
-
-
 <div id="errorBox">
-
-
     <div class="error-card">
-
-
         <i class="fa-solid fa-circle-exclamation"></i>
-
-
         <h2>
             City Not Found
         </h2>
-
-
         <p>
             Please enter a valid city name.
         </p>
-
-
     </div>
-
-
 </div>
-
-
-
-
-
-<!-- ======================================================
-     PART 1E STARTS HERE
-
-     - About Section
-     - Contact Section
-     - Footer
-     - Social Links
-     - Closing HTML
-
-====================================================== -->
-<!-- ================= ABOUT SECTION ================= -->
-
 <section id="about" class="about-section glass">
-
     <h2>
-
         <i class="fa-solid fa-circle-info"></i>
-
         About WeatherPro
-
     </h2>
-
-
     <p>
-
         WeatherPro is a modern weather forecasting dashboard
         created using HTML, CSS and JavaScript.
 
         It provides real-time weather information,
         hourly prediction, weekly forecast,
         air quality details and smart weather recommendations.
-
     </p>
-
-
     <div class="about-features">
-
-
         <div>
-
             <i class="fa-solid fa-cloud-sun"></i>
-
             <h3>
                 Live Weather
             </h3>
-
             <p>
                 Real-time weather updates.
             </p>
 
         </div>
-
-
-
         <div>
-
             <i class="fa-solid fa-chart-line"></i>
-
             <h3>
                 Forecast
             </h3>
-
             <p>
                 Hourly and weekly prediction.
             </p>
 
         </div>
-
-
-
         <div>
-
             <i class="fa-solid fa-brain"></i>
-
             <h3>
                 Smart Advice
             </h3>
-
             <p>
                 AI-style weather recommendations.
             </p>
-
         </div>
-
-
-
     </div>
-
-
 </section>
-
-
-
-
-
-<!-- ================= CONTACT SECTION ================= 
-
-
 <section id="contact" class="contact-section glass">
-
-
     <h2>
-
         <i class="fa-solid fa-envelope"></i>
-
         Contact Us
-
     </h2>
-
-
-
     <form id="contactForm">
-
 
         <input
         type="text"
         placeholder="Your Name"
         id="contactName">
-
-
-
         <input
         type="email"
         placeholder="Your Email"
         id="contactEmail">
-
-
-
         <textarea
         placeholder="Your Message"
         id="contactMessage"></textarea>
-
-
-
         <button type="submit">
-
             <i class="fa-solid fa-paper-plane"></i>
-
             Send Message
-
         </button>
-
-
-
     </form>
-
-
-
-</section>-->
-
-
-
-
-
-<!-- ================= FOOTER ================= 
-
-
+</section>
 <footer class="footer">
-
-
     <div class="footer-logo">
-
-
         <i class="fa-solid fa-cloud-sun"></i>
-
         WeatherPro
-
-
     </div>
-
-
-
-
     <p>
-
-        © 2026 WeatherPro.
+        © 2026 Weathersense.
         All Rights Reserved.
-
     </p>
-
-
-
-
-    <div class="social-links">
-
-
-        <a href="#">
-
-            <i class="fa-brands fa-github"></i>
-
-        </a>
-
-
-
-        <a href="#">
-
-            <i class="fa-brands fa-linkedin"></i>
-
-        </a>
-
-
-
-        <a href="#">
-
-            <i class="fa-brands fa-twitter"></i>
-
-        </a>
-
-
-
-        <a href="#">
-
-            <i class="fa-brands fa-instagram"></i>
-
-        </a>
-
-
-
-    </div>
-
-
-
-</footer-->
-
-
-
-
-
-<!-- ================= JAVASCRIPT LIBRARIES ================= -->
-
-
-<!-- Chart Library -->
-
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-<!-- Main JavaScript -->
-
 <script src="script.js"></script>
-
-
-
 </body>
-
 </html>
